@@ -10,12 +10,13 @@
   },
   "plugins": [
     {
-      "name": "prd-generator",
-      "source": "./plugins/prd-generator",
-      "description": "Structured PRD creation for vibe coders. Asks the right questions before you start building.",
+      "name": "prd-manager",
+      "source": "./plugins/prd-manager",
+      "description": "Complete PRD management suite. Generate, update, and compare PRDs throughout your build process.",
       "version": "1.0.0",
       "category": "productivity",
-      "tags": ["planning", "prd", "requirements", "beginner-friendly"]
+      "tags": ["planning", "prd", "requirements", "beginner-friendly", "hooks"],
+      "skills": ["generate", "update", "compare"]
     },
     {
       "name": "work-loop-coach",

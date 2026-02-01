@@ -4,18 +4,33 @@ Vibe coding tools that turn new builders into confident AI-first practitioners.
 
 ## Quick Start
 
-```
-/plugin marketplace add mvp-club/mvp-club-claude-skills
-/plugin install prd-generator@mvp-club-skills
+```bash
+# Add the marketplace (fetches from GitHub - auto-updates on each use)
+/plugin marketplace add mvp-club/mvp-club-skills
+
+# Install a plugin
+/plugin install prd-manager@mvp-club-skills
 ```
 
-## Available Skills
+## Available Plugins
 
-| Skill | Description | Best For |
-|-------|-------------|----------|
-| **prd-generator** | Structured PRD creation | Before starting any project |
-| **work-loop-coach** | Work Loop methodology guidance | During building |
-| **evaluate-my-build** | Systematic build evaluation | After completing something |
+| Plugin | Skills | Description |
+|--------|--------|-------------|
+| **prd-manager** | `generate`, `update`, `compare` | Complete PRD management suite |
+| **work-loop-coach** | `coach` | Work Loop methodology guidance |
+| **evaluate-my-build** | `evaluate` | Systematic build evaluation |
+
+## Skill Invocation
+
+Skills are invoked as `plugin-name:skill-name`:
+
+```bash
+prd-manager:generate      # Create a new PRD
+prd-manager:update        # Update PRD after building
+prd-manager:compare       # Compare PRD to implementation
+work-loop-coach:coach     # Get methodology guidance
+evaluate-my-build:evaluate # Evaluate your build
+```
 
 ## The Work Loop
 
@@ -23,7 +38,33 @@ These skills support the MVP Club Work Loop methodology:
 
 **Articulate** → **Build** → **Prompt** → **Execute** → **Evaluate** → **Iterate**
 
-AI proficiency isn't about learning tools—it's about learning to think and work differently.
+| Phase | Supported By |
+|-------|--------------|
+| Articulate | `prd-manager:generate` |
+| Build/Prompt/Execute | `work-loop-coach:coach` |
+| Evaluate | `evaluate-my-build:evaluate`, `prd-manager:compare` |
+| Iterate | `prd-manager:update` |
+
+## Post-Session Hooks
+
+Keep your PRD in sync automatically:
+
+```json
+{
+  "hooks": {
+    "post_session": ["prd-manager:update"]
+  }
+}
+```
+
+## Updates
+
+**GitHub-hosted marketplaces auto-update.** When you add a marketplace from a GitHub repo, Claude Code fetches the latest version each time you use it. No manual update needed.
+
+To check for new plugins or skills:
+```bash
+/plugin marketplace list mvp-club-skills
+```
 
 ## Philosophy
 

@@ -1,6 +1,12 @@
 # Work Loop Coach
 
-A methodology skill that guides you through effective Human + AI collaboration.
+A methodology plugin that guides you through effective Human + AI collaboration.
+
+## Skills
+
+| Skill | Command | Description |
+|-------|---------|-------------|
+| **coach** | `work-loop-coach:coach` | Guide through Work Loop methodology |
 
 ## The Work Loop
 
@@ -10,15 +16,20 @@ This isn't a rigid process—it's a mental model for working effectively with AI
 
 ## Usage
 
-The skill activates automatically during building tasks. It provides gentle guidance without slowing you down.
+Invoke the coach when you need methodology guidance:
+```
+work-loop-coach:coach
+```
+
+The skill can also activate automatically during building tasks, providing gentle guidance without slowing you down.
 
 ## Philosophy
 
-AI proficiency isn't about learning tools—it's about learning to think and work differently. This skill embeds that thinking into practice.
+AI proficiency isn't about learning tools—it's about learning to think and work differently. This plugin embeds that thinking into practice.
 
 ## Installation
 
 ```
-/plugin marketplace add mvp-club/mvp-club-claude-skills
+/plugin marketplace add mvp-club/mvp-club-skills
 /plugin install work-loop-coach@mvp-club-skills
 ```

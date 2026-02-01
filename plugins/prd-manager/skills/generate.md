@@ -1,6 +1,6 @@
 ---
-name: prd-generator
-description: Use this skill when a user wants to plan a new project, define requirements, create a PRD, or when they're about to start building something without clear goals. Activate when users say things like "I want to build...", "help me plan...", "I have an idea for...", or "let's create a PRD".
+name: generate
+description: Use this skill when a user wants to plan a new project, define requirements, create a PRD, or when they're about to start building something without clear goals. Activate when users say things like "I want to build...", "help me plan...", "I have an idea for...", or "let's create a PRD". Invoke with prd-manager:generate.
 ---
 
 # PRD Generator for Vibe Coders

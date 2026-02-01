@@ -1,9 +1,15 @@
 {
   "name": "work-loop-coach",
-  "description": "Coaching skill that guides users through the Work Loop methodology for Human + AI collaboration.",
+  "description": "Coaching plugin that guides users through the Work Loop methodology for Human + AI collaboration.",
   "version": "1.0.0",
   "author": {
     "name": "MVP Club Consulting"
   },
-  "keywords": ["methodology", "workflow", "coaching", "human-ai-teams"]
+  "keywords": ["methodology", "workflow", "coaching", "human-ai-teams"],
+  "skills": [
+    {
+      "name": "coach",
+      "description": "Guide through Work Loop methodology"
+    }
+  ]
 }

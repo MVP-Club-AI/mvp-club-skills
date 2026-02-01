@@ -5,5 +5,11 @@
   "author": {
     "name": "MVP Club Consulting"
   },
-  "keywords": ["evaluation", "review", "feedback", "iteration"]
+  "keywords": ["evaluation", "review", "feedback", "iteration"],
+  "skills": [
+    {
+      "name": "evaluate",
+      "description": "Evaluate your build against original goals"
+    }
+  ]
 }

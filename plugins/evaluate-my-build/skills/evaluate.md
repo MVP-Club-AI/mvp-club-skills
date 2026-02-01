@@ -1,6 +1,6 @@
 ---
-name: evaluate-my-build
-description: Use this skill when a user wants to evaluate, review, or assess something they've built. Activate when users say things like "evaluate this", "review my build", "is this good?", "what's missing?", "how did I do?", or when they've completed a building task and need feedback.
+name: evaluate
+description: Use this skill when a user wants to evaluate, review, or assess something they've built. Activate when users say things like "evaluate this", "review my build", "is this good?", "what's missing?", "how did I do?", or when they've completed a building task and need feedback. Invoke with evaluate-my-build:evaluate.
 ---
 
 # Evaluate My Build

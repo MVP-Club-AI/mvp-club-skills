@@ -1,0 +1,23 @@
+{
+  "name": "prd-manager",
+  "description": "Complete PRD management for vibe coders. Generate, update, and compare PRDs throughout your build process.",
+  "version": "1.0.0",
+  "author": {
+    "name": "MVP Club Consulting"
+  },
+  "keywords": ["prd", "planning", "requirements", "vibe-coding", "documentation"],
+  "skills": [
+    {
+      "name": "generate",
+      "description": "Create a new PRD from scratch"
+    },
+    {
+      "name": "update",
+      "description": "Update PRD based on what was actually built"
+    },
+    {
+      "name": "compare",
+      "description": "Compare PRD to current implementation"
+    }
+  ]
+}
