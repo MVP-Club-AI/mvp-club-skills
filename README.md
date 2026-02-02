@@ -5,29 +5,29 @@ Vibe coding tools that turn new builders into confident AI-first practitioners.
 ## Quick Start
 
 ```bash
-# Add the marketplace (fetches from GitHub - auto-updates on each use)
+# Step 1: Add the marketplace
 /plugin marketplace add MVP-Club-AI/mvp-club-skills
 
-# Install a plugin
-/plugin install prd-manager@mvp-club-skills
+# Step 2: Install the setup wizard
+/plugin install initialize-skills@mvp-club-skills
+
+# Step 3: Run setup - this installs everything else!
+initialize-skills:setup
 ```
 
-## Getting Started with Hooks
+The setup wizard will:
+1. Ask about your workflow and experience level
+2. Recommend the right plugins for you
+3. Install them automatically
+4. Configure hooks in your settings
 
-The fastest way to set up hooks is with the setup wizard:
+**Presets available:**
+- **Full Suite** - All plugins + hooks (for new builders)
+- **Vibe Coder** - Essential plugins + pre-push validation (for those who push to main)
+- **PR Workflow** - Quality-focused plugins + commit/PR hooks
+- **Minimal** - Just the essentials (for experienced devs)
 
-```bash
-initialize-hooks:setup
-```
-
-This will walk you through choosing a profile and configure your `~/.claude/settings.json` automatically.
-
-**Profiles available:**
-- **Minimal** - Just pre-push validation
-- **Vibe Coder** - Pre-push + coaching prompts (recommended for most users)
-- **Full Suite** - All validation gates and coaching prompts
-
-See `recommended-hooks.json` for the complete hook definitions (source of truth).
+Or customize and pick exactly what you want.
 
 ## Available Plugins
 
@@ -57,7 +57,8 @@ See `recommended-hooks.json` for the complete hook definitions (source of truth)
 
 | Plugin | Skills | Description |
 |--------|--------|-------------|
-| **initialize-hooks** | `setup`, `profiles`, `add-hook`, `remove-hook` | One-command setup for hooks |
+| **initialize-skills** | `setup` | Main onboarding wizard - installs plugins and configures hooks |
+| **initialize-hooks** | `setup`, `profiles`, `add-hook`, `remove-hook` | Manage hooks after initial setup |
 
 ## Skill Invocation
 
@@ -98,7 +99,12 @@ These skills support the MVP Club Work Loop methodology:
 
 ## Hooks
 
-**Recommended:** Use `initialize-hooks:setup` to configure hooks automatically. The wizard will set up your `~/.claude/settings.json` based on your workflow.
+**Recommended:** Run `initialize-skills:setup` to configure hooks as part of the full onboarding flow.
+
+For hook management after initial setup, use:
+- `initialize-hooks:profiles` - View available hook profiles
+- `initialize-hooks:add-hook <id>` - Add a specific hook
+- `initialize-hooks:remove-hook <id>` - Remove a hook
 
 All hook definitions are in `recommended-hooks.json` (source of truth).
 

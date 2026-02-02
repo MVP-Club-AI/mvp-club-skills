@@ -6,9 +6,18 @@
   },
   "metadata": {
     "description": "Vibe coding tools that turn new builders into confident AI-first practitioners. Built on the Work Loop methodology.",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "plugins": [
+    {
+      "name": "initialize-skills",
+      "source": "./plugins/initialize-skills",
+      "description": "Main onboarding wizard. Install plugins and configure hooks in one conversation based on your workflow.",
+      "version": "1.0.0",
+      "category": "setup",
+      "tags": ["onboarding", "setup", "installation", "wizard", "getting-started"],
+      "skills": ["setup"]
+    },
     {
       "name": "prd-manager",
       "source": "./plugins/prd-manager",

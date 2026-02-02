@@ -1,0 +1,15 @@
+{
+  "name": "initialize-skills",
+  "description": "One-command onboarding for MVP Club Skills. Interactive wizard to install plugins and configure hooks based on your workflow.",
+  "version": "1.0.0",
+  "author": {
+    "name": "MVP Club Consulting"
+  },
+  "keywords": ["setup", "onboarding", "installation", "wizard", "getting-started"],
+  "skills": [
+    {
+      "name": "setup",
+      "description": "Interactive wizard to install plugins and configure hooks"
+    }
+  ]
+}
