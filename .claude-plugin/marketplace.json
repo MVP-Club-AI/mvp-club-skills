@@ -51,17 +51,18 @@
     {
       "name": "build-checkpoint",
       "source": "./plugins/build-checkpoint",
-      "description": "Progressive validation gates that trigger testing at natural breakpoints. Quality checks before commits and PRs.",
-      "version": "1.0.0",
+      "description": "Progressive validation gates that trigger testing at natural breakpoints. Quality checks before commits, pushes to main, and PRs.",
+      "version": "1.1.0",
       "category": "quality",
-      "tags": ["hooks", "validation", "quality", "git", "workflow"],
+      "tags": ["hooks", "validation", "quality", "git", "workflow", "deploy"],
       "hooks": {
         "PreToolUse": {
           "git commit": ["build-checkpoint:pre-commit"],
+          "git push": ["build-checkpoint:pre-push"],
           "gh pr create": ["build-checkpoint:pre-pr"]
         }
       },
-      "skills": ["configure", "pre-commit", "pre-pr", "skip"]
+      "skills": ["configure", "pre-commit", "pre-push", "pre-pr", "skip"]
     },
     {
       "name": "screenshot-journal",

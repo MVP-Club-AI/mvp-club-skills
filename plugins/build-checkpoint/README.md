@@ -13,6 +13,7 @@ Checkpoints trigger at natural breakpoints in your workflow:
 | Trigger | Check | Rigor Level |
 |---------|-------|-------------|
 | Before commit | `pre-commit` | Quick smoke test |
+| Before push to main | `pre-push` | Deploy-ready validation |
 | Before PR | `pre-pr` | Full user flow validation |
 
 ## Skills
@@ -25,6 +26,13 @@ Quick validation before committing:
 - Is the app still running?
 - Does the main action work?
 - Any obvious errors?
+
+### `build-checkpoint:pre-push`
+Deploy-ready validation before pushing to main. For vibe coders who push directly to main (no branches/PRs), this is your last line of defense:
+- Full smoke test
+- Screenshot current state
+- Verify main user flow
+- Check console for errors
 
 ### `build-checkpoint:pre-pr`
 Comprehensive validation before opening a PR:
@@ -49,6 +57,11 @@ Checkpoints can be configured per-project:
     "pre-commit": {
       "enabled": true,
       "level": "smoke"
+    },
+    "pre-push": {
+      "enabled": true,
+      "level": "deploy-ready",
+      "capture-screenshot": true
     },
     "pre-pr": {
       "enabled": true,

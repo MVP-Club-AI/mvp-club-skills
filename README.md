@@ -27,7 +27,7 @@ Vibe coding tools that turn new builders into confident AI-first practitioners.
 |--------|--------|-------------|
 | **agent-handles** | `audit`, `suggest`, `add` | Make your app AI-testable with semantic handles |
 | **claude-pilot** | `walkthrough`, `smoke-test`, `report`, `record` | Claude becomes your first user (requires Playwright MCP) |
-| **build-checkpoint** | `configure`, `pre-commit`, `pre-pr`, `skip` | Progressive validation gates at natural breakpoints |
+| **build-checkpoint** | `configure`, `pre-commit`, `pre-push`, `pre-pr`, `skip` | Progressive validation gates at natural breakpoints |
 
 ### Documentation & Guidance
 
@@ -84,6 +84,20 @@ Automatically validate before committing:
   "hooks": {
     "PreToolUse": {
       "git commit": ["build-checkpoint:pre-commit"]
+    }
+  }
+}
+```
+
+### Pre-Push Validation (Recommended for Vibe Coders)
+
+Validate before pushing to main. For vibe coders who push directly to main (no branches/PRs), this is your deploy gate:
+
+```json
+{
+  "hooks": {
+    "PreToolUse": {
+      "git push": ["build-checkpoint:pre-push"]
     }
   }
 }
