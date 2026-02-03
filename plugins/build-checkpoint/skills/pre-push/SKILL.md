@@ -1,5 +1,4 @@
 ---
-name: pre-push
 description: This skill runs automatically before git push to main/master (via hook) or can be invoked manually. Performs validation before code goes live. More thorough than pre-commit since pushing to main often means deploying. Invoke with build-checkpoint:pre-push.
 ---
 

@@ -1,5 +1,4 @@
 ---
-name: update
 description: Use this skill to update an existing PRD based on what was actually built. Ideal for post-session hooks or when the implementation has diverged from the original plan. Activate when users say things like "update the PRD", "sync the PRD", "the PRD is out of date", or after a building session completes. Invoke with prd-manager:update.
 ---
 

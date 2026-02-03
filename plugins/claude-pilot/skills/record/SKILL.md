@@ -1,5 +1,4 @@
 ---
-name: record
 description: Use this skill for live narrated exploration where Claude uses the app and talks through everything in real-time. Activate when users say "try my app", "use it and tell me what you see", "explore my app", "show me what it's like to use this". Invoke with claude-pilot:record.
 ---
 

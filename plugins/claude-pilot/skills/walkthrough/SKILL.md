@@ -1,5 +1,4 @@
 ---
-name: walkthrough
 description: Use this skill to walk through a complete user journey, screenshotting each step. Activate when users say "test the signup flow", "walk through the checkout", "follow the user journey", "test this flow end to end". Invoke with claude-pilot:walkthrough.
 ---
 

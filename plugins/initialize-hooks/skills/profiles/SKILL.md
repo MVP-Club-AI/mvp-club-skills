@@ -1,5 +1,4 @@
 ---
-name: profiles
 description: View available hook profiles and their included hooks. Read-only view of what you can configure. Invoke with initialize-hooks:profiles.
 ---
 

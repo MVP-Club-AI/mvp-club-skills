@@ -1,5 +1,4 @@
 ---
-name: remove-hook
 description: Remove a hook from your Claude Code settings. Specify the hook by ID. Invoke with initialize-hooks:remove-hook <hook-id>.
 ---
 

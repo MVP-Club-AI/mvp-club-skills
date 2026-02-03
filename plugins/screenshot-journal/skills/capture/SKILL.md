@@ -1,5 +1,4 @@
 ---
-name: capture
 description: Use this skill to take an annotated screenshot of the app's current state. Activate when users say "screenshot this", "capture the app", "document current state", "take a picture of this". Invoke with screenshot-journal:capture.
 ---
 

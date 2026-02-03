@@ -1,5 +1,4 @@
 ---
-name: compare
 description: Use this skill to compare the current PRD against what has been implemented. Shows gaps, additions, and alignment. Activate when users say things like "compare to PRD", "how close are we to the PRD?", "PRD check", "are we on track?", or "what's left from the PRD?". Invoke with prd-manager:compare.
 ---
 

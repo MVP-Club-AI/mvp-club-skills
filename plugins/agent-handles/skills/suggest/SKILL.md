@@ -1,5 +1,4 @@
 ---
-name: suggest
 description: Use this skill when a user needs help naming agent-handles for their UI elements. Activate when users say "what should I name this handle?", "help me name handles", "suggest handle names", or when they share a component and want handle recommendations. Invoke with agent-handles:suggest.
 ---
 

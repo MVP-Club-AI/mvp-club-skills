@@ -1,5 +1,4 @@
 ---
-name: pre-pr
 description: This skill runs automatically before creating a pull request (via hook) or manually. Performs comprehensive validation of all user flows. Invoke with build-checkpoint:pre-pr.
 ---
 

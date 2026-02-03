@@ -1,5 +1,4 @@
 ---
-name: prompt-me
 description: Use this skill when a user wants to manually trigger a validation prompt. Activate when users say "ask me something", "prompt me", "what should I think about?", "any questions about this code?". Invoke with flow-questions:prompt-me.
 ---
 

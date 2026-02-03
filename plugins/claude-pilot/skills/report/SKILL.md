@@ -1,5 +1,4 @@
 ---
-name: report
 description: Use this skill to generate a comprehensive First User Report with screenshots, findings, and recommendations. Activate when users say "give me a user report", "what did you find?", "summarize the testing", "first user report". Invoke with claude-pilot:report.
 ---
 

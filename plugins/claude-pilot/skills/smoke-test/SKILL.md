@@ -1,5 +1,4 @@
 ---
-name: smoke-test
 description: Use this skill for a quick sanity check that the app is working. Activate when users say "test my app", "does it work?", "smoke test", "quick check", or before committing code. Invoke with claude-pilot:smoke-test.
 ---
 

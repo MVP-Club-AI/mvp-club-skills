@@ -1,5 +1,4 @@
 ---
-name: audit
 description: Use this skill when you need to check if a codebase has proper agent-handle attributes for automated testing. Activate when users say "check my handles", "audit agent handles", "is my app testable?", "can Claude test this?", or before running claude-pilot skills. Invoke with agent-handles:audit.
 ---
 

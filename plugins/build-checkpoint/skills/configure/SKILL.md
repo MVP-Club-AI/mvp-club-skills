@@ -1,5 +1,4 @@
 ---
-name: configure
 description: Use this skill to set up or modify build checkpoint configuration. Activate when users say "configure checkpoints", "set up build gates", "change checkpoint settings", "disable pre-commit checks". Invoke with build-checkpoint:configure.
 ---
 

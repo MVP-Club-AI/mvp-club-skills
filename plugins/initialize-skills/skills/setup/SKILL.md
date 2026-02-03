@@ -1,5 +1,4 @@
 ---
-name: setup
 description: Interactive wizard to install MVP Club Skills plugins and configure hooks. The main onboarding entry point. Invoke with initialize-skills:setup.
 ---
 

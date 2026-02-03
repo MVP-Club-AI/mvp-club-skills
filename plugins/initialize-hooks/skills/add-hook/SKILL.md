@@ -1,5 +1,4 @@
 ---
-name: add-hook
 description: Add a single hook to your Claude Code settings. Specify the hook by ID. Invoke with initialize-hooks:add-hook <hook-id>.
 ---
 

@@ -1,5 +1,4 @@
 ---
-name: configure
 description: Use this skill to adjust flow question frequency and types. Activate when users say "too many questions", "change question settings", "configure prompts", "adjust flow questions". Invoke with flow-questions:configure.
 ---
 

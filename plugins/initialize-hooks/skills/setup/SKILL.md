@@ -1,5 +1,4 @@
 ---
-name: setup
 description: Interactive wizard to set up MVP Club Skills hooks. Presents profiles, shows what will be added, and modifies ~/.claude/settings.json. Invoke with initialize-hooks:setup.
 ---
 

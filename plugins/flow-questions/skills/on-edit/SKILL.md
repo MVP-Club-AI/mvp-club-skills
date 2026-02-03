@@ -1,5 +1,4 @@
 ---
-name: on-edit
 description: This skill triggers automatically (via hook) after editing files, detecting patterns that warrant questions. Notices things like repeated edits, form additions, error handling changes.
 ---
 

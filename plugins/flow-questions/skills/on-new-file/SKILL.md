@@ -1,5 +1,4 @@
 ---
-name: on-new-file
 description: This skill triggers automatically (via hook) after creating a new file, or can be invoked manually. Asks contextual questions about the new component's purpose and validation needs.
 ---
 

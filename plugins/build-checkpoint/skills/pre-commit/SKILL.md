@@ -1,5 +1,4 @@
 ---
-name: pre-commit
 description: This skill runs automatically before git commits (via hook) or can be invoked manually. Performs quick validation to catch obvious issues before committing code. Invoke with build-checkpoint:pre-commit.
 ---
 

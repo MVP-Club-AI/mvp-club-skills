@@ -1,5 +1,4 @@
 ---
-name: coach
 description: Use this skill to guide users through the Work Loop methodology during any building or creation task. Activate when users are working on projects, seem stuck, are jumping ahead without planning, or explicitly ask about the Work Loop or methodology. Invoke with work-loop-coach:coach.
 ---
 

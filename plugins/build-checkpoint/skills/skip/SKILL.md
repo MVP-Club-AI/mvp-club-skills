@@ -1,5 +1,4 @@
 ---
-name: skip
 description: Use this skill to temporarily bypass a build checkpoint with a documented reason. Activate when users say "skip the check", "bypass checkpoint", "commit anyway", "I know it's broken". Invoke with build-checkpoint:skip.
 ---
 

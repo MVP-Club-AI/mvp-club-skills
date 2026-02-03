@@ -1,5 +1,4 @@
 ---
-name: timeline
 description: Use this skill to generate a visual timeline/history of the build from captured screenshots. Activate when users say "show build history", "timeline of progress", "what did we build?", "visual summary". Invoke with screenshot-journal:timeline.
 ---
 

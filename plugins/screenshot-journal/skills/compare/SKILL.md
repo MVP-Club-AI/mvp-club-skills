@@ -1,5 +1,4 @@
 ---
-name: compare
 description: Use this skill to create a side-by-side comparison of expected design vs actual implementation. Activate when users say "compare to mockup", "how close is it?", "PRD vs actual", "compare design to implementation". Invoke with screenshot-journal:compare.
 ---
 

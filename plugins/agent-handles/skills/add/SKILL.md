@@ -1,5 +1,4 @@
 ---
-name: add
 description: Use this skill when a user wants you to add agent-handle attributes to their components. Activate when users say "add handles to this", "make this testable", "insert agent handles", or after an audit when they want to fix missing handles. Invoke with agent-handles:add.
 ---
 
