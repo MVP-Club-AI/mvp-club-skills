@@ -1,5 +1,5 @@
 ---
-description: Interactive wizard to install MVP Club Skills plugins and configure hooks. The main onboarding entry point. Invoke with initialize-skills:setup.
+description: Interactive wizard to install MVP Club Skills plugins and configure hooks. The main onboarding entry point.
 ---
 
 # Initialize Skills: Setup Wizard
@@ -12,7 +12,7 @@ This wizard will:
 1. Understand the user's workflow and experience level
 2. Recommend or let them choose plugins
 3. Install the selected plugins
-4. Configure hooks in their settings
+4. Configure hooks in their settings (MERGING with existing settings)
 5. Provide a summary and next steps
 
 ## Setup Process
@@ -68,12 +68,11 @@ Since you're getting started, I recommend the full suite of tools:
 | **claude-pilot** | Tests your app like a real user |
 | **build-checkpoint** | Validates before commits/pushes |
 | **screenshot-journal** | Captures visual progress |
-| **flow-questions** | Asks helpful questions as you build |
 
 ### Hooks to Configure
-- Pre-push validation (checks before pushing to main)
-- Flow questions (coaching prompts when editing files)
-- PRD sync (keeps your PRD updated)
+- Pre-commit validation (quick checks before each commit)
+- Pre-push validation (thorough checks before pushing)
+- Pre-PR validation (full validation before opening PRs)
 
 This gives you comprehensive support while you're learning.
 
@@ -91,12 +90,10 @@ You've got some experience and push directly to main. Here's what I recommend:
 |--------|--------------|
 | **prd-manager** | Keep track of what you're building |
 | **build-checkpoint** | Validates before you push to production |
-| **flow-questions** | Occasional helpful prompts |
 | **claude-pilot** | Quick smoke tests when needed |
 
 ### Hooks to Configure
 - Pre-push validation (your deploy gate)
-- Flow questions (light coaching prompts)
 
 This keeps you moving fast with a safety net.
 
@@ -128,7 +125,7 @@ Sound good? (yes / let me customize)
 
 #### For "Experienced":
 ```markdown
-## Recommended: Minimal + Pick Your Own
+## Recommended: Minimal
 
 You know what you're doing. Here's the minimal setup:
 
@@ -149,7 +146,6 @@ Want to add more plugins? Here's what's available:
 | **agent-handles** | AI-testable handles |
 | **claude-pilot** | Automated user testing |
 | **screenshot-journal** | Visual documentation |
-| **flow-questions** | Coaching prompts |
 
 Which additional plugins would you like? (or "none" for minimal)
 ```
@@ -172,9 +168,8 @@ Select which plugins you want to install:
 - [ ] **claude-pilot** - Automated user testing (requires Playwright MCP)
 - [ ] **build-checkpoint** - Validation gates for git operations
 
-### Documentation & Guidance
+### Documentation
 - [ ] **screenshot-journal** - Visual build history (requires Playwright MCP)
-- [ ] **flow-questions** - Coaching prompts while building
 
 Which plugins would you like?
 ```
@@ -191,30 +186,27 @@ Show exactly what will happen:
 Here's what I'll do:
 
 ### Plugins to Install
-1. `/plugin install prd-manager@mvp-club-skills`
-2. `/plugin install build-checkpoint@mvp-club-skills`
-3. `/plugin install flow-questions@mvp-club-skills`
+1. `claude plugin install prd-manager@mvp-club-skills`
+2. `claude plugin install build-checkpoint@mvp-club-skills`
 
 ### Hooks to Configure
 Will add to `~/.claude/settings.json`:
 - Pre-push validation (before `git push`)
-- Flow questions (after `Write`/`Edit`)
 
 Proceed? (yes/no)
 ```
 
 ### Step 6: Execute Installation
 
-If confirmed, execute the plugin install commands:
+If confirmed, execute the plugin install commands using Bash:
 
 ```bash
-/plugin install prd-manager@mvp-club-skills
-/plugin install build-checkpoint@mvp-club-skills
-/plugin install flow-questions@mvp-club-skills
+claude plugin install prd-manager@mvp-club-skills
+claude plugin install build-checkpoint@mvp-club-skills
 # ... etc for each selected plugin
 ```
 
-**Important:** Execute these as actual commands. The user needs to see the installation happen.
+**Important:** Execute these as actual Bash commands. The user needs to see the installation happen.
 
 Report progress as you go:
 ```markdown
@@ -222,27 +214,71 @@ Installing plugins...
 
 - [x] prd-manager installed
 - [x] build-checkpoint installed
-- [x] flow-questions installed
 
 All plugins installed!
 ```
 
-### Step 7: Configure Hooks
+### Step 7: Configure Hooks (CRITICAL: MERGE, DON'T OVERWRITE)
 
-After plugins are installed, configure hooks:
+After plugins are installed, configure hooks by MERGING with existing settings:
 
-1. Read `recommended-hooks.json` from the mvp-club-skills repository
-2. Read current `~/.claude/settings.json` (or create if doesn't exist)
-3. Merge the appropriate hooks based on their selections
-4. Write the updated settings file
+1. Read current `~/.claude/settings.json` (or treat as empty `{}` if doesn't exist)
+2. Parse the existing JSON
+3. **PRESERVE all existing keys** (permissions, enabledPlugins, etc.)
+4. If `hooks` key exists, MERGE new hooks into the existing arrays
+5. If `hooks` key doesn't exist, create it
+6. Write the updated settings file
 
-```markdown
-Configuring hooks...
+**Example merge logic:**
+```
+existing settings:
+{
+  "permissions": { ... },
+  "enabledPlugins": { ... },
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Bash(rm -rf)", "hooks": [...] }  // existing hook
+    ]
+  }
+}
 
-- [x] Pre-push validation configured
-- [x] Flow questions configured
+After adding pre-push hook:
+{
+  "permissions": { ... },           // preserved
+  "enabledPlugins": { ... },        // preserved
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Bash(rm -rf)", "hooks": [...] },  // preserved
+      { "matcher": "Bash(git push)", "hooks": [...] } // added
+    ]
+  }
+}
+```
 
-Hooks configured!
+**Hook configs to add (from recommended-hooks.json):**
+
+Pre-commit:
+```json
+{
+  "matcher": "Bash(git commit)",
+  "hooks": [{ "type": "skill", "skill": "build-checkpoint:pre-commit" }]
+}
+```
+
+Pre-push:
+```json
+{
+  "matcher": "Bash(git push)",
+  "hooks": [{ "type": "skill", "skill": "build-checkpoint:pre-push" }]
+}
+```
+
+Pre-PR:
+```json
+{
+  "matcher": "Bash(gh pr create)",
+  "hooks": [{ "type": "skill", "skill": "build-checkpoint:pre-pr" }]
+}
 ```
 
 ### Step 8: Success Summary
@@ -251,25 +287,21 @@ Hooks configured!
 ## You're All Set!
 
 ### Installed Plugins
-- **prd-manager** - `prd-manager:generate`, `prd-manager:update`, `prd-manager:compare`
-- **build-checkpoint** - Runs automatically before pushes
-- **flow-questions** - Runs automatically when editing files
+- **prd-manager** - `/prd-manager:generate`, `/prd-manager:update`
+- **build-checkpoint** - Runs automatically before git operations
 
 ### Active Hooks
-- **Pre-push** - Validates before pushing to main
-- **Flow questions** - Coaching prompts when creating/editing files
+- **Pre-push** - Validates before pushing
 
 ### Try These Commands
-```bash
-prd-manager:generate    # Start planning your build
-work-loop-coach:coach   # Get methodology guidance
-claude-pilot:smoke-test # Test your app
-```
+- `/prd-manager:generate` - Start planning your build
+- `/work-loop-coach:coach` - Get methodology guidance
+- `/claude-pilot:smoke-test` - Test your app
 
 ### Need Help?
-- `initialize-hooks:profiles` - View/change hook profiles
-- `initialize-hooks:add-hook` - Add more hooks
-- `initialize-hooks:remove-hook` - Remove a hook
+- `/initialize-hooks:profiles` - View/change hook profiles
+- `/initialize-hooks:add-hook` - Add more hooks
+- `/initialize-hooks:remove-hook` - Remove a hook
 
 Happy building!
 ```
@@ -280,14 +312,13 @@ For reference, here are all the install commands:
 
 | Plugin | Command |
 |--------|---------|
-| prd-manager | `/plugin install prd-manager@mvp-club-skills` |
-| work-loop-coach | `/plugin install work-loop-coach@mvp-club-skills` |
-| agent-handles | `/plugin install agent-handles@mvp-club-skills` |
-| claude-pilot | `/plugin install claude-pilot@mvp-club-skills` |
-| build-checkpoint | `/plugin install build-checkpoint@mvp-club-skills` |
-| screenshot-journal | `/plugin install screenshot-journal@mvp-club-skills` |
-| flow-questions | `/plugin install flow-questions@mvp-club-skills` |
-| initialize-hooks | `/plugin install initialize-hooks@mvp-club-skills` |
+| prd-manager | `claude plugin install prd-manager@mvp-club-skills` |
+| work-loop-coach | `claude plugin install work-loop-coach@mvp-club-skills` |
+| agent-handles | `claude plugin install agent-handles@mvp-club-skills` |
+| claude-pilot | `claude plugin install claude-pilot@mvp-club-skills` |
+| build-checkpoint | `claude plugin install build-checkpoint@mvp-club-skills` |
+| screenshot-journal | `claude plugin install screenshot-journal@mvp-club-skills` |
+| initialize-hooks | `claude plugin install initialize-hooks@mvp-club-skills` |
 
 ## Handling Errors
 
@@ -323,8 +354,8 @@ Friendly and efficient. This is the user's first experience with MVP Club Skills
 
 ## Important Notes
 
-- Always execute the actual `/plugin install` commands—don't just describe them
+- Always execute the actual `claude plugin install` commands via Bash—don't just describe them
 - Install `initialize-hooks` automatically so they can manage hooks later
-- Read hook configs from `recommended-hooks.json` (source of truth)
-- Preserve existing settings when adding hooks
+- **CRITICAL: MERGE hooks with existing settings, never overwrite the entire file**
+- Preserve existing permissions, enabledPlugins, and any existing hooks
 - If they already have some plugins installed, acknowledge and skip those

@@ -9,13 +9,13 @@
     },
     "vibe-coder": {
       "name": "Vibe Coder",
-      "description": "For developers who push directly to main. Validation before deploy plus helpful coaching prompts.",
-      "hooks": ["pre-push", "flow-questions"]
+      "description": "For developers who push directly to main. Validation before deploy.",
+      "hooks": ["pre-push"]
     },
     "full": {
       "name": "Full Suite",
-      "description": "Comprehensive support for new builders. All validation gates and coaching prompts enabled.",
-      "hooks": ["pre-commit", "pre-push", "pre-pr", "flow-questions", "prd-sync"]
+      "description": "Comprehensive support for new builders. Validation gates at key git moments.",
+      "hooks": ["pre-commit", "pre-push", "pre-pr"]
     }
   },
   "hooks": {
