@@ -31,13 +31,34 @@ If there's a PRD, reference the User Flow section.
 
 ## Screenshot Directory
 
+> **CRITICAL RULE: Every screenshot MUST be saved inside a timestamped subdirectory under `test-screenshots/`. NEVER save screenshots directly into `test-screenshots/` without a subdirectory.**
+
 At the start of each walkthrough, create a new directory for all screenshots:
 
 ```
-screenshots/walkthrough-YYYY-MM-DD-HH-MM/
+test-screenshots/walkthrough-YYYY-MM-DD-HH-MM/
 ```
 
-Example: `screenshots/walkthrough-2024-01-15-16-00/`
+Example: `test-screenshots/walkthrough-2024-01-15-16-00/`
+
+### Directory Setup (Do This FIRST)
+
+Before taking any screenshots, create the timestamped directory:
+
+```bash
+mkdir -p test-screenshots/walkthrough-$(date +%Y-%m-%d-%H-%M)
+```
+
+### WRONG vs RIGHT
+
+```
+WRONG: test-screenshots/01-landing-page.png
+WRONG: test-screenshots/screenshot.png
+WRONG: screenshots/01-landing-page.png
+
+RIGHT: test-screenshots/walkthrough-2024-01-15-16-00/01-landing-page.png
+RIGHT: test-screenshots/walkthrough-2024-01-15-16-00/02-signup-form.png
+```
 
 All screenshots for this run go inside that folder. Number them sequentially with a description:
 - `01-landing-page.png`
@@ -46,7 +67,7 @@ All screenshots for this run go inside that folder. Number them sequentially wit
 - `04-dashboard-success.png`
 - `05-error-state.png`
 
-Create the `screenshots/` directory if it doesn't already exist. Never reuse a previous run's folder — every invocation gets a fresh timestamped directory.
+Create the `test-screenshots/` directory if it doesn't already exist. Never reuse a previous run's folder — every invocation gets a fresh timestamped directory.
 
 ## Walkthrough Process
 
@@ -93,7 +114,7 @@ For every action in the flow:
 **What I'm doing:** Clicking the "Start Free Trial" button
 **What happened:** Modal appeared with signup form
 
-[Screenshot: screenshots/walkthrough-2024-01-15-16-00/01-landing-page.png]
+[Screenshot: test-screenshots/walkthrough-2024-01-15-16-00/01-landing-page.png]
 
 **Observations:**
 - CTA is clear and prominent ✓
@@ -107,8 +128,8 @@ For every action in the flow:
 **What I'm doing:** Filling in test@example.com and a password, clicking "Create Account"
 **What happened:** Form submitted, brief loading state, then redirected to dashboard
 
-[Screenshot: screenshots/walkthrough-2024-01-15-16-00/02-signup-form.png]
-[Screenshot: screenshots/walkthrough-2024-01-15-16-00/03-loading-state.png]
+[Screenshot: test-screenshots/walkthrough-2024-01-15-16-00/02-signup-form.png]
+[Screenshot: test-screenshots/walkthrough-2024-01-15-16-00/03-loading-state.png]
 
 **Observations:**
 - No password requirements shown until after error - could show upfront
@@ -121,7 +142,7 @@ For every action in the flow:
 **What I see:** Dashboard with welcome message "Welcome, test@example.com!"
 **What happened:** Successfully signed up and logged in
 
-[Screenshot: screenshots/walkthrough-2024-01-15-16-00/04-dashboard-success.png]
+[Screenshot: test-screenshots/walkthrough-2024-01-15-16-00/04-dashboard-success.png]
 
 **Observations:**
 - Welcome message confirms identity ✓
@@ -168,7 +189,7 @@ For every action in the flow:
 ### App Error
 ```markdown
 **What happened:** Page showed error message
-[Screenshot: screenshots/walkthrough-2024-01-15-16-00/05-error-state.png]
+[Screenshot: test-screenshots/walkthrough-2024-01-15-16-00/05-error-state.png]
 **Console errors:** [list any errors]
 **Stopping walkthrough at this point**
 ```

@@ -18,15 +18,36 @@ If starting fresh or re-testing, check if an `AGENT-HANDLES.md` file exists in t
 
 ## Screenshot Directory
 
+> **CRITICAL RULE: Every screenshot MUST be saved inside a timestamped subdirectory under `test-screenshots/`. NEVER save screenshots directly into `test-screenshots/` without a subdirectory.**
+
 If starting fresh and taking new screenshots, create a new directory for this run:
 
 ```
-screenshots/report-YYYY-MM-DD-HH-MM/
+test-screenshots/report-YYYY-MM-DD-HH-MM/
 ```
 
-If compiling from previous test runs, reference the screenshots in their existing `screenshots/` subdirectories (e.g., `screenshots/smoke-test-2024-01-15-14-30/`, `screenshots/walkthrough-2024-01-15-16-00/`).
+### Directory Setup (Do This FIRST)
 
-Create the `screenshots/` directory if it doesn't already exist. Never reuse a previous run's folder — every invocation gets a fresh timestamped directory.
+Before taking any screenshots, create the timestamped directory:
+
+```bash
+mkdir -p test-screenshots/report-$(date +%Y-%m-%d-%H-%M)
+```
+
+### WRONG vs RIGHT
+
+```
+WRONG: test-screenshots/01-landing-page.png
+WRONG: test-screenshots/screenshot.png
+WRONG: screenshots/01-landing-page.png
+
+RIGHT: test-screenshots/report-2024-01-15-14-30/01-landing-page.png
+RIGHT: test-screenshots/report-2024-01-15-14-30/02-issue-found.png
+```
+
+If compiling from previous test runs, reference the screenshots in their existing `test-screenshots/` subdirectories (e.g., `test-screenshots/smoke-test-2024-01-15-14-30/`, `test-screenshots/walkthrough-2024-01-15-16-00/`).
+
+Create the `test-screenshots/` directory if it doesn't already exist. Never reuse a previous run's folder — every invocation gets a fresh timestamped directory.
 
 ## Report Structure
 

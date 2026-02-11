@@ -18,13 +18,34 @@ You are exploring an app in real-time, narrating your experience as you go. Thin
 
 ## Screenshot Directory
 
+> **CRITICAL RULE: Every screenshot MUST be saved inside a timestamped subdirectory under `test-screenshots/`. NEVER save screenshots directly into `test-screenshots/` without a subdirectory.**
+
 At the start of each recording session, create a new directory for all screenshots:
 
 ```
-screenshots/record-YYYY-MM-DD-HH-MM/
+test-screenshots/record-YYYY-MM-DD-HH-MM/
 ```
 
-Example: `screenshots/record-2024-01-15-10-45/`
+Example: `test-screenshots/record-2024-01-15-10-45/`
+
+### Directory Setup (Do This FIRST)
+
+Before taking any screenshots, create the timestamped directory:
+
+```bash
+mkdir -p test-screenshots/record-$(date +%Y-%m-%d-%H-%M)
+```
+
+### WRONG vs RIGHT
+
+```
+WRONG: test-screenshots/01-first-impression.png
+WRONG: test-screenshots/screenshot.png
+WRONG: screenshots/01-first-impression.png
+
+RIGHT: test-screenshots/record-2024-01-15-10-45/01-first-impression.png
+RIGHT: test-screenshots/record-2024-01-15-10-45/02-after-signup-click.png
+```
 
 All screenshots for this session go inside that folder. Number them sequentially with a description:
 - `01-first-impression.png`
@@ -32,7 +53,7 @@ All screenshots for this session go inside that folder. Number them sequentially
 - `03-form-filled.png`
 - `04-error-state.png`
 
-Create the `screenshots/` directory if it doesn't already exist. Never reuse a previous run's folder — every invocation gets a fresh timestamped directory.
+Create the `test-screenshots/` directory if it doesn't already exist. Never reuse a previous run's folder — every invocation gets a fresh timestamped directory.
 
 ## The Approach
 
@@ -101,7 +122,7 @@ Capture screenshots at key moments and reference them in narration:
 
 ```
 I just clicked submit and got an error. Let me screenshot this...
-[Screenshot: screenshots/record-2024-01-15-10-45/04-error-state.png]
+[Screenshot: test-screenshots/record-2024-01-15-10-45/04-error-state.png]
 
 The error says "Invalid email format" but I'm pretty sure test@example.com is valid. Maybe there's a bug here.
 ```

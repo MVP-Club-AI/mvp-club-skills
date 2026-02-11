@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__puppeteer__puppeteer_screenshot|mcp__ios-simulator__screenshot",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/validate-screenshot-path.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

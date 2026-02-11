@@ -18,13 +18,34 @@ You are performing a quick sanity check on an app using Playwright. The goal is 
 
 ## Screenshot Directory
 
+> **CRITICAL RULE: Every screenshot MUST be saved inside a timestamped subdirectory under `test-screenshots/`. NEVER save screenshots directly into `test-screenshots/` without a subdirectory.**
+
 At the start of each test run, create a new directory for all screenshots:
 
 ```
-screenshots/smoke-test-YYYY-MM-DD-HH-MM/
+test-screenshots/smoke-test-YYYY-MM-DD-HH-MM/
 ```
 
-Example: `screenshots/smoke-test-2024-01-15-14-30/`
+Example: `test-screenshots/smoke-test-2024-01-15-14-30/`
+
+### Directory Setup (Do This FIRST)
+
+Before taking any screenshots, create the timestamped directory:
+
+```bash
+mkdir -p test-screenshots/smoke-test-$(date +%Y-%m-%d-%H-%M)
+```
+
+### WRONG vs RIGHT
+
+```
+WRONG: test-screenshots/01-initial-load.png
+WRONG: test-screenshots/screenshot.png
+WRONG: screenshots/01-initial-load.png
+
+RIGHT: test-screenshots/smoke-test-2024-01-15-14-30/01-initial-load.png
+RIGHT: test-screenshots/smoke-test-2024-01-15-14-30/02-after-click.png
+```
 
 All screenshots for this run go inside that folder. Number them sequentially:
 - `01-initial-load.png`
@@ -32,7 +53,7 @@ All screenshots for this run go inside that folder. Number them sequentially:
 - `03-navigation.png`
 - `04-error-state.png`
 
-Create the `screenshots/` directory if it doesn't already exist. Never reuse a previous run's folder — every invocation gets a fresh timestamped directory.
+Create the `test-screenshots/` directory if it doesn't already exist. Never reuse a previous run's folder — every invocation gets a fresh timestamped directory.
 
 ## The Smoke Test Checklist
 
@@ -62,8 +83,8 @@ Run through these checks quickly:
 ## Using Playwright
 
 ```javascript
-// Create run directory: screenshots/smoke-test-YYYY-MM-DD-HH-MM/
-const runDir = `screenshots/smoke-test-${timestamp}`;
+// Create run directory: test-screenshots/smoke-test-YYYY-MM-DD-HH-MM/
+const runDir = `test-screenshots/smoke-test-${timestamp}`;
 
 await page.goto(appUrl);
 await page.screenshot({ path: `${runDir}/01-initial-load.png` });
@@ -101,12 +122,12 @@ Priority order:
 
 ### Visual ✅
 - Main layout renders correctly
-- [Screenshot: screenshots/smoke-test-2024-01-15-14-30/01-initial-load.png]
+- [Screenshot: test-screenshots/smoke-test-2024-01-15-14-30/01-initial-load.png]
 
 ### Interaction ✅
 - Clicked "Get Started" button
 - Modal appeared as expected
-- [Screenshot: screenshots/smoke-test-2024-01-15-14-30/02-after-click.png]
+- [Screenshot: test-screenshots/smoke-test-2024-01-15-14-30/02-after-click.png]
 
 ### Navigation ✅
 - Navigated to /dashboard
@@ -130,7 +151,7 @@ Don't stop at the first failure. Complete all checks and report:
 - Clicked "Sign In" button
 - **ERROR:** Button click did not trigger any action
 - Console shows: "TypeError: handleSubmit is not defined"
-- [Screenshot: screenshots/smoke-test-2024-01-15-14-30/03-error-state.png]
+- [Screenshot: test-screenshots/smoke-test-2024-01-15-14-30/03-error-state.png]
 ```
 
 ## After the Smoke Test

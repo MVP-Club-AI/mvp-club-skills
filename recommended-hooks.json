@@ -136,6 +136,28 @@
           ]
         }
       }
+    },
+    "screenshot-validation": {
+      "id": "screenshot-validation",
+      "name": "Screenshot Path Validation",
+      "description": "Ensures claude-pilot screenshots use the required timestamped subdirectory structure under test-screenshots/.",
+      "trigger": "PreToolUse",
+      "matcher": "mcp__puppeteer__puppeteer_screenshot, mcp__ios-simulator__screenshot",
+      "config": {
+        "hooks": {
+          "PreToolUse": [
+            {
+              "matcher": "mcp__puppeteer__puppeteer_screenshot|mcp__ios-simulator__screenshot",
+              "hooks": [
+                {
+                  "type": "command",
+                  "command": "${CLAUDE_PLUGIN_ROOT:=.}/plugins/claude-pilot/hooks/validate-screenshot-path.sh"
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   }
 }
